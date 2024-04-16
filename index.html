@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        .Main {
+            background: url('/img/bg-signin.jpg');
+            object-fit: cover;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            animation: rotate 15s infinite alternate linear;
+            color: #868b94;
+        }
+
+        .Main-card {
+            width: 400px;
+            padding: 20px 0px 32px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(26px);
+            text-align: center;
+        }
+
+        .Main-icon {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 70px;
+            cursor: pointer;
+        }
+
+        .Main-icon .uil {
+            color: #fff;
+            font-size: 28px;
+        }
+
+        .Main-icon .uil1 {
+            color: #fff;
+            font-size: 29px;
+        }
+
+        .Main-image {
+            width: auto;
+            display: table;
+            border-radius: 50%;
+            background: #363945;
+            margin: 0 auto;
+            margin-bottom: 5px;
+        }
+
+        .Main-image img {
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .Main h2 {
+            font-size: 34px;
+            font-weight: 600;
+            color: #f9f9f9;
+        }
+
+        button {
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .control {
+            border: none;
+            border-radius: 8px;
+            max-width: 100%;
+            height: 56px;
+            padding: 0px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #f9f9f9;
+            margin: 8px 0;
+            font-family: inherit;
+            font-size: 16px;
+            transition: 0.4s;
+        }
+
+        .Main-form {
+            display: flex;
+            flex-direction: column;
+            padding: 0 22px;
+        }
+
+        .Main-form>button.control {
+            cursor: pointer;
+            height: 56px;
+            padding: 0 16px;
+            background: #f9f9f9;
+            color: #000000;
+            border: 0;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 2px;
+            transition: all 0.375s;
+        }
+
+        .spinner {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            translate: 0 -50%;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 3px solid #ccc9e1;
+            border-top-color: #8f44fd;
+            opacity: 0;
+            animation: spin 1s infinite linear;
+        }
+
+        .spinner .visible {
+            opacity: 1;
+        }
+
+        .indicator {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @keyframes spin {
+            100% {
+                rotate: 1turn;
+            }
+        }
+
+        @keyframes rotate {
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        #bars {
+            margin: 8px 0;
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #bars div {
+            height: 6px;
+            border-radius: 3px;
+            transition: 0.4s;
+            width: 0%;
+        }
+
+        #bars.weak div {
+            background: #bc2b38;
+            width: 33.33%;
+        }
+
+        #bars.medium div {
+            background: #d36f30;
+            width: 66.66%;
+        }
+
+        #bars.strong div {
+            background: #1eb965;
+            width: 100%;
+        }
+
+        .Strength {
+            text-align: left;
+            height: 30px;
+            text-transform: capitalize;
+        }
+    </style>
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <main class="Main">
+        <div class="Main-card">
+            <div class="Main-content">
+
+                <div class="Main-image">
+                    <img src="./assets/img/peeps-avatar-alpha.png" alt="" />
+                </div>
+                <h2>Sign-up</h2>
+
+                <div class="Main-icon">
+                </div>
+
+            </div>
+            <form class="Main-form">
+                <input autocomplete="off" spellcheck="false" class="control" type="text" placeholder="Your name" />
+                <div id="spinner" class="Spinner"></div>
+                <input autocomplete="off" spellcheck="false" class="control" type="text" placeholder="Your username" />
+                <div id="spinner" class="Spinner"></div>
+                <input autocomplete="off" spellcheck="false" class="control" type="email" placeholder="Your email" />
+                <div id="spinner" class="Spinner"></div>
+                <input spellcheck="false" class="control" id="password" type="password" placeholder="Password"
+                    required />
+                <div id="bars">
+                    <div></div>
+                </div>
+                <div class="strength" id="strength"></div>
+                <button class="control">ENTER</button>
+            </form>
+        </div>
+    </main>
+    <script src="./code.js"></script>
+</body>
+
+</html>
