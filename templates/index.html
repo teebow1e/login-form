@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="code.js" defer></script>
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <main class="Main">
+        <div class="Main-card">
+            <div class="Main-content">
+
+                <div class="Main-image">
+                    <img src="./assets/img/peeps-avatar-alpha.png" alt="" />
+                </div>
+                <h2>Sign-up</h2>
+
+                <div class="Main-icon">
+                </div>
+
+            </div>
+            <form class="Main-form">
+                <input autocomplete="off" spellcheck="false" class="control" type="text" placeholder="Your name" />
+                <div id="spinner" class="Spinner"></div>
+                <input autocomplete="off" spellcheck="false" class="control" type="text" placeholder="Your username" />
+                <div id="spinner" class="Spinner"></div>
+                <input autocomplete="off" spellcheck="false" class="control" type="email" placeholder="Your email" />
+                <div id="spinner" class="Spinner"></div>
+                <input spellcheck="false" class="control" id="password" type="password" placeholder="Password"
+                    required />
+                <div class="password-checker">
+                    <select name="model" class="dropdown" id="dropdown-model">
+                        <option value="default" disabled selected>Choose the model</option>
+                        <option value="pwstat_lib">PasswordStats Library</option>
+                        <option value="dt_rg">Regression - DecisionTree</option>
+                        <option value="rf_rg">Regression - RandomForest</option>
+                        <option value="dt_cl">Classification - DecisionTree</option>
+                        <option value="rf_cl">Classification - RandomForest</option>
+                      </select>
+                    <input type="button" value="Verify" class="check-pw-btn" id="check-pass">
+                </div>
+                <div id="bars">
+                    <div></div>
+                </div>
+                <div class="strength" id="strength"></div>
+                <button class="control">Sign-up</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
