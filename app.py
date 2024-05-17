@@ -60,6 +60,7 @@ def test_strength():
 
     if model == "pwstat_lib":
         result = str(PasswordStats(password_to_test).strength())
+        print(f"prediction: {result}")
     else:
         attr1 = len(password_to_test)
         attr2 = calculate_type_char(password_to_test)
@@ -84,6 +85,7 @@ def test_strength():
         )
         prediction = available_models[model].predict(X_new)
         result = str(prediction.tolist()[0])
+        print(f"prediction: {result}")
 
     final_resp = {
         "model": model,
