@@ -43,6 +43,10 @@ function checkStrength(num) {
 
 checkPwBtn.addEventListener("click", () => {
   let password = passwordInput.value;
+  if (password.length < 4) {
+    alert("Password must be longer than 4 characters!");
+    return;
+  }
   let model = dropdownModel.value;
   if (model == "default") {
     alert("Please select a model!");
