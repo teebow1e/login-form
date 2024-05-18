@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   font-family: "Poppins", sans-serif;
-  animation: rotate 15s infinite alternate linear;
+  animation: rotate 30s infinite alternate linear;
   color: #868b94;
 }
 
@@ -205,4 +205,30 @@ option {
   text-transform: capitalize;
   transition: 0.4s;
   margin: 5px;
+}
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #faf9f9;
 }

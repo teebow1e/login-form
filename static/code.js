@@ -4,6 +4,8 @@ const strengthDiv = document.querySelector("#strength");
 const passwordInput = document.querySelector("#password");
 const checkPwBtn = document.getElementById("check-pass");
 const dropdownModel = document.getElementById("dropdown-model");
+const passwordField = document.getElementById('password');
+const passwordToggler = document.querySelector('.toggle-password');
 
 const strength = {
   1: "very weak",
@@ -41,10 +43,17 @@ function checkStrength(num) {
   return strengthIndicator;
 }
 
+passwordToggler.addEventListener('click', function () {
+  const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+  passwordField.setAttribute('type', type);
+  this.querySelector('i').classList.toggle('fa-eye');
+  this.querySelector('i').classList.toggle('fa-eye-slash');
+});
+
 checkPwBtn.addEventListener("click", () => {
   let password = passwordInput.value;
   if (password.length < 4) {
-    alert("Password must be longer than 4 characters!");
+    alert("⚠️ Password must be longer than 4 characters!");
     return;
   }
   let model = dropdownModel.value;
