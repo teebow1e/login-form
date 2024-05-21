@@ -3,3 +3,5 @@ scikit-learn==1.4.2
 joblib==1.2.0
 pandas==1.5.3
 password_strength==0.0.3.post2
+Werkzeug==2.2.2
+lightgbm
