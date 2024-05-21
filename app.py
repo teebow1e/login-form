@@ -16,13 +16,14 @@ DT_RG = joblib.load("model/decision_tree_regressor.pkl")
 DT_CL = joblib.load("model/decision_tree_classification.pkl")
 RF_RG = joblib.load("model/random_forest_regressor.pkl")
 RF_CL = joblib.load("model/random_forest_classification.pkl")
-KNN_RG = joblib.load("model/knn_regressor.pkl")
+KNN_RG = joblib.load("model/knn_regression.pkl")
 KNN_CL = joblib.load("model/knn_classification.pkl")
 LGBM_RG = joblib.load("model/lgbm_regression.pkl")
 LGBM_CL = joblib.load("model/lgbm_classification.pkl")
 LINEAR_RG = joblib.load("model/linear_regression.pkl")
 SVC = joblib.load("model/SVC.pkl")
 SVR = joblib.load("model/SVR.pkl")
+GNB_CL = joblib.load("model/gaussianNB_classification.pkl")
 
 
 available_models = {
@@ -37,6 +38,7 @@ available_models = {
     "lgbm_cl": LGBM_CL,
     "sv_cl": SVC,
     "linear_rg": LINEAR_RG,
+    "gnb_cl": GNB_CL,
 }
 
 app = Flask(
