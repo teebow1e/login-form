@@ -6,6 +6,7 @@ const checkPwBtn = document.getElementById("check-pass");
 const dropdownModel = document.getElementById("dropdown-model");
 const passwordField = document.getElementById('password');
 const passwordToggler = document.querySelector('.toggle-password');
+const scoreDisplay = document.getElementById('points-display');
 
 const strength = {
   1: "very weak",
@@ -107,4 +108,5 @@ function handlePasswordStrength(data) {
     colorBars.style.background = strengthColor[strengthIndicator];
     strengthDiv.innerText = `Your password is ${strengthText}.`;
   }
+  scoreDisplay.textContent = parseFloat(data.strength).toFixed(4);
 }
