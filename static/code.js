@@ -8,7 +8,7 @@ const passwordField = document.getElementById('password');
 const passwordToggler = document.querySelector('.toggle-password');
 const scoreDisplay = document.getElementById('points-display');
 
-const alertLengthViolation = "⚠️ Password must be between 6 and 63 characters!";
+const alertLengthViolation = "⚠️ Password must be between 6 and 40 characters!";
 
 const strength = {
   1: "very weak",
@@ -55,7 +55,7 @@ passwordToggler.addEventListener('click', function () {
 
 checkPwBtn.addEventListener("click", () => {
   let password = passwordInput.value;
-  if (password.length < 6 || password.length > 63) {
+  if (password.length < 6 || password.length > 40) {
     alert(alertLengthViolation);
     return;
   }
