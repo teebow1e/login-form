@@ -1,3 +1,5 @@
+from collections import Counter
+from utils.Preprocessing import *
 from flask import Flask, request, render_template, jsonify
 import pandas as pd
 import joblib
@@ -25,6 +27,28 @@ SVC = joblib.load("model/SVC.pkl")
 SVR = joblib.load("model/SVR.pkl")
 GNB_CL = joblib.load("model/gaussianNB_classification.pkl")
 
+def VOTING_CL(password):
+    attr1 = len(password)
+    attr2 = calculate_type_char(password)
+    attr3 = calculate_dup_char(password)
+    attr4 = calculate_unique_char(password)
+    attr5 = calculate_consecutive_LC(password)
+    attr6 = calculate_consecutive_UC(password)
+    attr7 = calculate_consecutive_number(password)
+    attr8 = calculate_sequence_character(password)
+    
+    X_new = pd.DataFrame([[attr1, attr2, attr3, attr4, attr5, attr6, attr7, attr8]],
+            columns=['length', 'types_of_character', 'duplicate_character', 'unique_character', 'consecutive_LC', 
+                     'consecutive_UC', 'consecutive_number', 'sequence_character']) 
+    
+    predictions = []
+    predictions.append(DT_CL.predict(X_new)[0])
+    predictions.append(RF_CL.predict(X_new)[0])
+    predictions.append(KNN_CL.predict(X_new)[0])
+    predictions.append(LGBM_CL.predict(X_new)[0])
+    predictions.append(SVC.predict(X_new)[0])
+    count = Counter(predictions)
+    return count.most_common(1)[0][0]
 
 available_models = {
     "dt_rg": DT_RG,
@@ -62,7 +86,10 @@ def test_strength():
 
     if model == "pwstat_lib":
         result = str(PasswordStats(password_to_test).strength())
-        print(f"prediction: {result}")
+        print(f"prediction for the model {model}: {result}")
+    elif model == "voting_cl":
+        result = str(VOTING_CL(password_to_test))
+        print(f"prediction for the model {model}: {result}")
     else:
         attr1 = len(password_to_test)
         attr2 = calculate_type_char(password_to_test)
@@ -87,7 +114,7 @@ def test_strength():
         )
         prediction = available_models[model].predict(X_new)
         result = str(prediction.tolist()[0])
-        print(f"prediction: {result}")
+        print(f"prediction for the model {model}: {result}")
 
     final_resp = {
         "model": model,
