@@ -46,6 +46,11 @@ function checkStrength(num) {
   return strengthIndicator;
 }
 
+function checkForbiddenChar(pw) {
+  const forbiddenChars = /[_\\~>$¥\-_=+\]\[\{\}|\'";:/?.>,<]/;
+  return forbiddenChars.test(pw);
+}
+
 passwordToggler.addEventListener('click', function () {
   const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
   passwordField.setAttribute('type', type);
@@ -57,6 +62,10 @@ checkPwBtn.addEventListener("click", () => {
   let password = passwordInput.value;
   if (password.length < 6 || password.length > 40) {
     alert(alertLengthViolation);
+    return;
+  }
+  if (checkForbiddenChar(password)) {
+    alert("⚠️ Password contains forbidden characters!");
     return;
   }
   let model = dropdownModel.value;
